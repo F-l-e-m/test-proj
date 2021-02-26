@@ -1,7 +1,6 @@
 <template>
   <main class="container mt-md-5">
 
-    <!-- Loading spinner -->
     <div v-if="isLoading" class="spinner-border" />
 
     <template v-else>
@@ -9,7 +8,7 @@
         <h4 class="alert-heading">Data was cached!</h4>
         <p>You can clear cache and load data again.</p>
         <hr/>
-        <button class="btn btn-sm btn-primary mr-auto">
+        <button class="btn btn-sm btn-primary mr-auto" @click="clearCache">
           Clear cache
         </button>
       </div>
@@ -23,7 +22,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState, mapMutations } from 'vuex';
 
 export default {
 
@@ -69,6 +68,9 @@ export default {
   methods: {
     ...mapActions([
       'load',
+    ]),
+    ...mapMutations([
+      'clearCache',
     ]),
   },
 };

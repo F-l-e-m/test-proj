@@ -24,4 +24,11 @@ module.exports = {
   css: {
     sourceMap: NODE_ENV !== 'production',
   },
+  chainWebpack: (config) => {
+    const api = process.env.VUE_APP_API_URL;
+    config.resolve.alias.set(
+      'api',
+      path.resolve(__dirname, `src/api/${api}`),
+    );
+  },
 };
